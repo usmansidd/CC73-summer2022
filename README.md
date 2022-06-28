@@ -23,4 +23,4 @@ Currently studying CC and MAD. Want to become a developer. Interested in coding.
 
 
 ### NAUFIL BIN MAJID:
-Asalam e alikum guys as I m in the last year of my computer science degree I m the certified artificial intelligence engineer from piaic and I have done the specialisation in machine learning and algorithms in my degree I have keen interest in ml models Cisco networking and routing if I tell about myself rather than studies I love to swim and play football.
+Asalam e Alikum guys completing the last year of my computer science degree. I am the certified artificial intelligence engineer from piaic. I have keen interest in ml models Cisco networking and routing. If I tell about myself rather than studies I love to "swim" and play "football" as well.
