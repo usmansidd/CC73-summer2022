@@ -4,7 +4,7 @@
 StdID | Name
 ------------ | -------------
 9042  | Usman siddiqui
-63961 | Ali Afzal
+63361 | NAUFIL BIN MAJID 
 63961 | Ali Afzal
 62822 | SHAH MUHAMMAD AZHAR
 
@@ -20,3 +20,7 @@ Completing my last course in the degree. I have interest in Data Sciences and du
 
 ### SHAH MUHAMMAD AZHAR
 Currently studying CC and MAD. Want to become a developer. Interested in coding. Hobbies, Cricket, sketching. 
+
+
+### NAUFIL BIN MAJID:
+Asalam e alikum guys as I m in the last year of my computer science degree I m the certified artificial intelligence engineer from piaic and I have done the specialisation in machine learning and algorithms in my degree I have keen interest in ml models Cisco networking and routing if I tell about myself rather than studies I love to swim and play football.
