@@ -7,6 +7,7 @@ StdID | Name
 63361 | NAUFIL BIN MAJID 
 63961 | Ali Afzal
 62822 | SHAH MUHAMMAD AZHAR
+61030 | SYED WALI UDDIN
 
 
 ## Introduction:
@@ -24,3 +25,6 @@ Currently studying CC and MAD. Want to become a developer. Interested in coding.
 
 ### NAUFIL BIN MAJID:
 Asalam e Alikum guys completing the last year of my computer science degree. I am the certified artificial intelligence engineer from piaic. I have keen interest in ml models Cisco networking and routing. If I tell about myself rather than studies I love to "swim" and  play "football" as well.
+
+### SYED WALI UDDIN:
+This is Syed Wali Uddin. I Have excellent knowledge of modern languages like python, C#, Java, Javascript, and other languages. Currenlty it's my last year and trying to learn new skills too. I love to play Shooting games like CS 1.6 and Valorant.
