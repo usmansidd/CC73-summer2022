@@ -1,5 +1,5 @@
 PROJECT REPORT\
-(FLEX PROGRAM)\
+(FLEX PROGRAM)
 
 1.	**Project Background and Description:**\
 Flex GCC is used :\
