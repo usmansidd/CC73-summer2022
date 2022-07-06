@@ -7,7 +7,7 @@ Code is executed on CMD (C code)\
 “A flex program that will accept a valid ISO standard email address and international phone number.”
 
 Email ISO Standard : John@iso.org\
-In Our Email Address Program, An Email address is accepted according to ISO standards following : [A to Z], [0-9]. While special characters like "?" or "!" or any other characters are not accepted.\
+In Our Email Address Program, An Email address is accepted according to ISO standards following : [A to Z], [0-9], "@" and ".". While special characters like "?" or "!" or any other characters are not accepted.\
 example321@gmail.com --> Accepted !\
 example##@gmail.com --> Not Accepted
 
