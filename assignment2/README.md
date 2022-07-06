@@ -2,7 +2,7 @@ PROJECT REPORT
 (FLEX PROGRAM)
 7-July-2022
 
-1.	Project Background and Description:
+1.	**Project Background and Description:**
 Flex GCC is used : 
 Code is executed on CMD (C code)
 “A flex program that will accept a valid ISO standard email address and international phone number.”
