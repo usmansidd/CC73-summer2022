@@ -8,7 +8,7 @@ Code is executed on CMD (C code)\
 
 In Our Email Address Program, An Email address is accepted according to ISO standards following : [A to Z], [0-9]. While special characters like "?" or "!" or any other characters are not accepted.\
 example321@gmail.com --> Accepted !\
-example##@gmail.com --> Not Accepted\
+example##@gmail.com --> Not Accepted
 
 In Our Phone Number  Program, A Phone Number is accepted according to ISO Standards following : "+",[0-9] digits and the numbers limits are '14'. If limit exceeds after '14', It will give Invalid Numbers Error\
 +92034164859120 --> Accepted !\
