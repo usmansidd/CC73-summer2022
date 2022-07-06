@@ -15,7 +15,7 @@ example##@gmail.com --> Not Accepted
 Phone Number ISO Standard:\
 "+" Sign\
 Your Country Code/international Code : "44", "1", "92" etc.\
-Phone Number\
+Phone Number</br>
 In Our Phone Number  Program, A Phone Number is accepted according to ISO Standards following : "+",[0-9] digits and the numbers limits are '14'. If limit exceeds after '14', It will give Invalid Numbers Error\
 +92034164859120 --> Accepted !\
 +9203416485912011 --> Not Accpeted!
