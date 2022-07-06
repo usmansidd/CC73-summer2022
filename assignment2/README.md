@@ -2,10 +2,10 @@ PROJECT REPORT
 (FLEX PROGRAM)
 7-July-2022
 
-1.	**Project Background and Description:**
-__Flex GCC is used : 
-__Code is executed on CMD (C code)
-__“A flex program that will accept a valid ISO standard email address and international phone number.”
+1.	**Project Background and Description:**\
+Flex GCC is used :\
+__Code is executed on CMD (C code)\
+__“A flex program that will accept a valid ISO standard email address and international phone number.”\
 
 2. Problems and Issues:
 First of all, required libraries must be installed before executing the code. Our block of code was not running without “yywrap()” for “validemail” code. 
