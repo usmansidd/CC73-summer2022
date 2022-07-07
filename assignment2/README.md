@@ -11,8 +11,8 @@ In Our Email Address Program, An Email address is accepted according to ISO stan
 example321@gmail.com --> Accepted !\
 example##@gmail.com --> Not Accepted
 
-
-Phone Number ISO Standard: +443022440335\
+ 
+Phone Number ISO Standard: +443022441335\
 "+" Sign\
 Your Country Code/international Code : "44", "1", "92" etc.\
 Phone Number
