@@ -1,6 +1,6 @@
 # Phase 2
 
-## Phase Details
+## Phase Name
 Lexical Analyzer of Mini C
 
 ## Lexical Analyzer
