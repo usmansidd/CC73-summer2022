@@ -38,11 +38,11 @@ number++;</br>
 }</br>
  
 <ins>Also, it consists of:</ins></br>
-<b>“variables”</b></br>
+<b>“variables,parameters”</b></br>
 <b>“arithematic operations(%,*,+,-)”</b></br>
 <b>“comparisions(>,<,=<=,>=,==,!=)”</b></br>
 <b>“logical operations(&&,||,!)”</b></br>
-<b>“concatenations b/w Strings”</b></br>
+<b>“concatenations b/w Strings ("a" + "b")”</b></br>
  
 
 
