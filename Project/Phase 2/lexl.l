@@ -97,7 +97,6 @@ hex [0-9a-f]
 
 int main()
 {
-  //yyin=fopen("testcases/test-case-5.c","r");
   yyin=fopen("code.c","r");
   yylex();
 }
