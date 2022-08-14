@@ -15,7 +15,7 @@ Mini-C is straightforward language like C-language intended to be used for progr
 It consists of:</br>
 <br/>
 <b><ins>“if-statement”</b></ins></br>
-Example of If-then-else Statement:</br>
+Example of If Statement:</br>
 int num1 = 20;</br>
 int num2= 10;</br>
 int temp;</br>
