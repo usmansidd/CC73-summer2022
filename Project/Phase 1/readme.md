@@ -45,7 +45,7 @@ Example of If-then-else Statement:</br>
 Also, It doesn’t consists of <b>“main”</b> function like other programming languages that are: <b>"C”,”Java”,”Python” and “Javascript”</b>. Also Mini-C doesn’t support user-defined functions too.
  
 
-If we talk about Data types, following are mentioned below:</br>
+If we talk about Data types which it supports, following are mentioned below:</br>
 <b>“int”</b></br>
 <b>”string”</b></br>
 <b>”bool”</b></br>
