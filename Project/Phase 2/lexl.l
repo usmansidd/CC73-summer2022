@@ -49,3 +49,55 @@ hex [0-9a-f]
 <PREPROC>{ws};
 <PREPROC>\"[^"\n]+\"              {printf("\t%-30s : Header file\n",yytext);}
 <PREPROC>\n                       {yylineno++; BEGIN INITIAL;}
+<PREPROC>.                        {printf("Line %3d: Illegal header file format \n",yylineno);}
+"//".*                            ;
+
+\"[^\"\n]*\"     {
+
+  if(yytext[yyleng-2]=='\\') /* check if it was an escaped quote */
+  {
+    yyless(yyleng-1);       /* push the quote back if it was escaped */
+    yymore();
+  }
+ /* else
+  {
+ }*/
+}
+\"[^\"\n]*$                     {printf("Line %3d: Unterminated string %s\n",yylineno,yytext);}
+{digit}+({letter}|_)+        {printf("Line %3d: Illegal identifier name %s\n",yylineno,yytext);}
+\n                              {yylineno++;}
+"--"                {printf("\t%-30s : Operator\n",yytext);}
+"++"                {printf("\t%-30s : Operator\n",yytext);}
+"->"                {printf("\t%-30s : Operator\n",yytext);}
+"&&"                {printf("\t%-30s : Operator",yytext);}
+"||"                {printf("\t%-30s : Operator\n",yytext);}
+"<="                {printf("\t%-30s : Operator\n",yytext);}
+">="                {printf("\t%-30s : Operator\n",yytext);}
+"=="                {printf("\t%-30s : Operator\n",yytext);}
+"!="                    {printf("\t%-30s : Operator\n",yytext);}
+";"                    {printf("\t%-30s : Terminator\n",yytext);}
+"{"                             {printf("\t%-30s : Parentheses\n",yytext);}
+"}"                             {printf("\t%-30s : Parentheses\n",yytext);}
+","                    {printf("\t%-30s : Parentheses\n",yytext);}
+"="                    {printf("\t%-30s : Parentheses\n",yytext);}
+"("                    {printf("\t%-30s : Parentheses\n",yytext);}
+")"                    {printf("\t%-30s : Parentheses\n",yytext);}
+"["                             {printf("\t%-30s : Parentheses\n",yytext);}
+"]"                             {printf("\t%-30s : Parentheses\n",yytext);}
+"-"                    {printf("\t%-30s : Operator\n",yytext);}
+"+"                    {printf("\t%-30s : Operator\n",yytext);}
+"*"                    {printf("\t%-30s : Operator\n",yytext);}
+"/"                        {printf("\t%-30s : Operator\n",yytext);}
+"%"                    {printf("\t%-30s : Operator\n",yytext);}
+"<"                    {printf("\t%-30s : Operator\n",yytext);}
+">"                    {printf("\t%-30s : Operator\n",yytext);}
+.                               {printf("Line %3d: Illegal character %s\n",yylineno,yytext);}
+
+%%
+
+int main()
+{
+  //yyin=fopen("testcases/test-case-5.c","r");
+  yyin=fopen("code.c","r");
+  yylex();
+}
