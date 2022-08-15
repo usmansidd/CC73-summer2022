@@ -15,10 +15,11 @@ The phase can convert the code in mini C language to that of python. It does the
 ## Organization of Files
 File Name | Details
 ------------ | -------------
-code.c | The code to make tokens of
-lex.l | Flex code for the Lexical Analyzer
-lex.yy.c| Flex code for the Lexical Analyzer
-yacc.y | Flex code for the Lexical Analyzer
+Code Folder | Contains the input i.e the code to convert the language of
+Output | Contains the output of the program i.e python code
+lex.l | Flex code
+lex.yy.c| Flex compilation file
+yacc.y | Yacc code
 
 
 
