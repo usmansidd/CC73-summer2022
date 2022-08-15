@@ -20,6 +20,7 @@ identifier (_|{letter})({letter}|{digit}|_){0,31}
 %x PREPROC
 
 %%
+/*TEst comment */
 //Storing all the keywords to recognize
 //First all the datatypes are defined
 "int"                             {printf("\t%-30s : Data Type\n",yytext);}
