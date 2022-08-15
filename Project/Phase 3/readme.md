@@ -3,7 +3,6 @@
 ## Phase Name
 C code to Python Code Converter
 
-## Heading
 
 
 ## What is happening
