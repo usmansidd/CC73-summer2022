@@ -31,12 +31,24 @@ lexl.l | Flex code for the Lexical Analyzer
 
 
 ## Takeaways
+-> Learning and getting a deeper knowledge about Regular Expressions  
+-> In depth understanding of how lexemes are created  
+-> Getting a concept of tokens, token class and how they are recognized  
+-> Understanding how IDE's give different colors to different identifiers
 
 ## Sample Video
 https://user-images.githubusercontent.com/73800301/184550638-7386f5e9-c3bd-4b0f-b6d2-6cd164975e2d.mp4
 
 ### How to run
+1) Make sure Flex is installed and running
+2) Download the flex file and store it in a folder
+3) In the same folder create a file (code.c) of c language 
+4) Compile the Flex file using the follwing commands:   
+--> flex lexl.l   
+--> gcc lex.yy.c -lfl   
+--> ./a/out  
 
+The desird output of the tokens <tokenclass, lexeme> will be shown.
 
 ### Pre-Requisites
 --> Flex  
