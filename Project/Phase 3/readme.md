@@ -16,7 +16,9 @@ Deatils about converting C code to python
 File Name | Details
 ------------ | -------------
 code.c | The code to make tokens of
-lexl.l | Flex code for the Lexical Analyzer
+lex.l | Flex code for the Lexical Analyzer
+lex.yy.c| Flex code for the Lexical Analyzer
+yacc.y | Flex code for the Lexical Analyzer
 
 
 
@@ -32,6 +34,7 @@ https://user-images.githubusercontent.com/73800301/184659760-519e28dc-2f99-407e-
 
 ### Pre-Requisites
 --> Flex  
+--> Yacc  
 
 
 
