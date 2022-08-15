@@ -7,7 +7,9 @@ C code to Python Code Converter
 
 
 ## What is happening
-Explanation
+YACC short for Yet Another Compiler Compiler creates parser. As we know and as we have seen in the previous phase the output of the flex is in tokens. 
+Yacc takes those tokens and parses them in the Grammer provided. Usually what happens is that this phenomenon is used in converting HLL(high level language) to Machine language but in out project it is converting Mini C(details in Phase 1) to python.
+In Yacc our given CFG is converted to a C code implementation. This new file is our parser/compiler. 
 
 ## Features
 The phase can convert the code in mini C language to that of python. It does the following by using regular expressions in Flex and using grammars in Yacc. 
