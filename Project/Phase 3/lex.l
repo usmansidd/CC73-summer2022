@@ -119,3 +119,56 @@ LETTER?'(\\.|[^\\'])+'                          { yylval.name = strdup(yytext); 
 .                                               { /*Unkown chars*/ }
 
 %%
+
+int yywrap(){
+    return(1);
+}
+
+int column = 0;
+
+/*Counts the end of the input, spaces and tabs*/
+void count(){
+    int i;
+    for (i = 0; yytext[i] != '\0'; i++){
+        if (yytext[i] == '\n')      column = 0;
+        else if (yytext[i] == '\t') column += 8 - (column % 8);
+        else                        column++;
+    }
+}
+
+/*Locates the cursor at the end of a comment*/
+void comment(void){
+    
+    //Saves the actual character and the lookahead
+    int cursor = input();
+    int lookahead = input();
+
+    while (lookahead != EOF && !(cursor == '*' && lookahead == '/')){
+        
+        //Increases the line counter
+        if (cursor == '\n') ++line_number;
+        
+        //Forwards the cursor position and lookahead
+        cursor = lookahead;
+        lookahead = input();
+        
+    }
+
+    //Makes sure the comment has close
+    if(lookahead == EOF) printf("The comment has not been closed.\n");
+    
+}
+
+/*Forwards the cursor to the end of a line comment*/
+void line_comment(){
+   
+    //Cursor
+    int cursor = input();
+
+    //Goes through the lookahead until the new line is found
+    while (cursor != '\n' && cursor != EOF) cursor = input();
+
+    //Increases the line counter if a new line is found
+    if(cursor == '\n') line_number += 1;
+    
+}
