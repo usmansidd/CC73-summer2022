@@ -215,3 +215,240 @@ assignment_operator
 	| ADD_ASSIGN { if(check_const_var(yyval.name)) yyerrok; fprintf(yy_output, " += "); }
 	| SUB_ASSIGN { if(check_const_var(yyval.name)) yyerrok; fprintf(yy_output, " -= "); }
 	;
+	
+	/*exprs*/
+expr
+	: assignment_expr
+	| expr ',' { fprintf(yy_output, ", "); } assignment_expr
+	;
+
+/*Constant expr*/
+constant_expr
+	: conditional_expr
+	;
+
+/*Declaration*/
+declaration
+    : declaration_specifiers init_declarator_list ';' {print("\n"); indent();}
+    {
+        for(symtable_set_type=sym_table; symtable_set_type!=(symrec *)0; symtable_set_type=(symrec *)symtable_set_type->next)
+			if(symtable_set_type->type==-1)
+				symtable_set_type->type=$1;
+	}
+	| declaration_specifiers init_declarator_list error { yyerror("A \";\" (semicolon) is missing"); yyerrok; }
+	;
+
+/*Specifiers*/
+declaration_specifiers
+	: type_specifier
+	| type_specifier declaration_specifiers
+	| type_qualifier
+	| type_qualifier declaration_specifiers
+	;
+
+/*Type qualifier*/
+type_qualifier
+	: CONST {global = TRUE;}
+	;
+
+
+/*Declarations*/
+init_declarator_list
+	: init_declarator
+    {
+        s = getsym($1);
+    	if(s==(symrec *)0) s = putsym($1);
+        else {
+    		yyerror("Variable previously declared");
+    		yyerrok;
+    	}
+		// print_type();
+    }
+	// @todo: ver si imprimir el salto de linea
+	| init_declarator_list ',' init_declarator { fprintf(yy_output, ""); indent(); }
+    {
+        s = getsym($3);
+        if(s==(symrec *)0) s = putsym($3);
+        else {
+            yyerror("Variable previously declared");
+            yyerrok;
+        }
+    }
+    | init_declarator_list ',' error { yyerror("Error. An extra ',' is received"); }
+	;
+
+/*Declarations*/
+init_declarator
+	: declarator
+	| init_direct_declarator '=' initializer { fprintf(yy_output, "%s", $3); }
+	;
+
+/*Types*/
+type_specifier
+	: CHAR   { if(!global) global=-FALSE; current_type = CHARACTER;   }
+	| INT    { if(!global) global=-FALSE; current_type = INTEGER;    }
+	| FLOAT  { if(!global) global=-FALSE; current_type = FLOATT;  }
+	| DOUBLE { if(!global) global=-FALSE; current_type = DOUBBLE; }
+	| SIGNED
+	| UNSIGNED
+	| VOID
+	;
+
+/*Declarator*/
+declarator
+	: direct_declarator
+	;
+
+/*Functions and arrays*/
+direct_declarator
+    : IDENTIFIER { if (is_function)is_function = 0; }
+    | IDENTIFIER '[' ']' { if (!is_function) fprintf(yy_output, " %s = [] \n", $1); else is_function = 0; }
+	| IDENTIFIER array_list { 
+		if (!is_function) fprintf(yy_output, "%s = [%s] \n", $1, $2); 
+		else is_function = 0; indent();}
+    | IDENTIFIER '[' CONSTANT ']' {fprintf(yy_output, "%s = [None] * %s\n",$1,$3);	indent();}
+    | IDENTIFIER '(' ')' { if (!is_function)fprintf(yy_output, "def %s():", $1); else is_function = 0; }
+	| IDENTIFIER '(' parameter_type_list ')' { 
+		if (!is_function) fprintf(yy_output, "def %s(%s):", $1, $3); 
+		else is_function = 0; }
+    ;
+
+/*Arrays*/
+init_direct_declarator
+	: IDENTIFIER { if (!is_function) fprintf(yy_output, "%s = ", $1); else is_function = 0; }
+	| IDENTIFIER array_declaration { if (!is_function) fprintf(yy_output, "%s = ", $1); else is_function = 0; } //@todo indent()
+	| IDENTIFIER array_list { if (!is_function) fprintf(yy_output, "%s = ", $1); else is_function = 0; }
+	;
+
+/*Arrays list*/
+array_list
+	: array_declaration
+	| array_list array_declaration { asprintf(&$$, "[None] * %s for i in range(%s)", $2, $1); }
+	;
+
+/*Arrays declaration*/
+array_declaration
+	: '[' ']' { asprintf(&$$, "[] "); } //@todo indent()
+	| '[' CONSTANT ']' { asprintf(&$$, "%s",$2); } //@todo indent()
+	;
+
+/*Parameter type*/
+parameter_type_list
+	: parameter_list
+	;
+
+/*Parameter list*/
+parameter_list
+	: parameter_declaration
+	| parameter_list ',' parameter_declaration { asprintf(&$$, "%s, %s", $1, $3); }
+	;
+
+/*Parameter declaration*/
+parameter_declaration
+	: { is_function = 1; } declaration_specifiers declarator { $$ = $3; }
+	;
+
+/*Parameter initializer*/
+initializer_list
+	: initializer
+	| initializer_list ',' initializer { asprintf(&$$, "%s, %s", $1, $3); }
+	;
+
+/*Exp initializer*/
+initializer
+	: IDENTIFIER
+	| CONSTANT
+	| STR
+	| CHARACTER
+	| '{' initializer_list '}' { asprintf(&$$, "[%s]", $2); }
+	;
+
+
+output_list
+	: IDENTIFIER {fprintf(yy_output, "%s", $1);}
+	| output_list ',' IDENTIFIER {fprintf(yy_output, ",%s", $3);}
+
+output
+	: PRINTFF '(' STR ')' ';' {fprintf(yy_output, "print(%s)\n", $3); indent();}
+	| PRINTFF '(' STR ',' {fprintf(yy_output, "print(%s % (", $3);} output_list ')' ';' {print("))\n"); indent();}
+
+
+/*Open scope*/
+open_curly
+    : '{'
+    {
+  		fprintf(yy_output,"\n");
+  		ind++; 
+		indent();
+  	}
+  	;
+
+/*Close scope*/
+close_curly
+    : '}'
+    {
+  		fprintf(yy_output,"\n");
+  		ind--; 
+		indent();
+  	}
+  	;
+
+/*Compound statements*/
+compound_statement
+    : open_curly close_curly
+    | open_curly statement_list close_curly
+    | open_curly declaration_list close_curly
+    | open_curly declaration_list statement_list close_curly
+    | '{' error { yyerror("A \"}\" (close curly) is missing"); yyerrok; }
+    ;
+
+/*Declarations*/
+declaration_list
+	: declaration
+	| declaration_list declaration
+	;
+
+/*Statements*/
+statement_list
+	: statement
+	| statement_list statement
+	;
+
+/*expr statement*/
+expr_statement
+	: ';' { print("\n"); indent(); }
+	| expr ';' { print("\n"); indent(); }
+    | expr error { yyerror("A \";\" (semicolon) is missing into the statement");yyerrok; }
+	;
+
+/*Statements*/
+statement
+	: labeled_statement
+	| output
+	| compound_statement
+	| expr_statement
+	| IF { print("if"); } '(' { print("("); } expr ')' { print("):"); } statement
+	| ELSE IF{ print("elif"); } '(' { print("("); } expr ')' { print("):"); } statement
+	| ELSE {print("else:"); } statement
+	| SWITCH { fprintf(yy_output, "match "); is_switch = TRUE;}'(' expr ')' { print(":"); } statement {is_switch = FALSE;}
+	| iteration_statement
+	| jump_statement
+	;
+
+/*Labeled statements*/
+labeled_statement
+	: CASE { fprintf(yy_output, "case "); } constant_expr ':' { fprintf(yy_output, ":\n\t"); indent();} statement {print("\t");}
+	| DEFAULT { fprintf(yy_output, "case _ "); } ':' { fprintf(yy_output, ":\n\t "); indent();} statement
+	;
+
+// END conditional
+
+// INIC LOOPS
+/*While*/
+while
+    : WHILE { print("while "); }
+  	;
+
+
+
+
