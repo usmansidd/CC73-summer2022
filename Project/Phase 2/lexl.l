@@ -10,7 +10,7 @@ int cmnt_strt = 0; //This is used to deal with the comments in the tokenization
 %}
 
 //Creation of Regular Expressions 
-letter [a-zA-Z] //RE for letters
+letter [a-zA-Z] /*RE for letters*/
 digit [0-9] //RE for digits
 ws  [ \t\r\f\v]+ //RE for whitespaces (space,tabs etc)
 identifier (_|{letter})({letter}|{digit}|_){0,31} //RE for identifier names
