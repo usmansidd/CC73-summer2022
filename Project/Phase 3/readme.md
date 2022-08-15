@@ -24,9 +24,9 @@ yacc.y | Yacc code
 
 
 ## Takeaways
--> Got a better understanding of how the compilers work
--> deeper understanding of how errors are caught in a compiler
--> Understanding of grammars and parsing
+-> Got a better understanding of how the compilers work  
+-> Deeper understanding of how errors are caught in a compiler  
+-> Understanding of grammars and parsing  
 
 ## Sample Video
 
